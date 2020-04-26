@@ -1,3 +1,3 @@
-import x from "./text";
-
-console.log(x);
+// Global App controller
+import "../css/style.css";
+import SeachMovies from "./models/Search";

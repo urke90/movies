@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  background: #5a5560;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+.container {
+  max-width: 120rem;
+  margin: 4vw auto;
+  display: grid;
+  border: 1px solid red;
+  /* grid-template-rows: 10rem minmax(100rem, auto);
+  grid-template-columns: 1.1fr 2fr 1.1fr;
+  grid-template-areas: "head head head" "list recipe shopping"; */
+}
+
+header {
+  max-width: 120rem;
+  margin: 4vw auto;
+  grid-area: head;
+  display: flex;
+  border: 1px solid blue;
+  justify-content: space-around;
+}
+.logo__wrapper {
+  display: flex;
+}
+h1 {
+  color: #faed26;
+}
+

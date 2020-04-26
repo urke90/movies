@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  background: #5a5560;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+.container {
+  max-width: 120rem;
+  margin: 4vw auto;
+  display: grid;
+  border: 1px solid red;
+  /* grid-template-rows: 10rem minmax(100rem, auto); */
+  grid-template-columns: 1.1fr 2fr 1.1fr;
+  /* grid-template-areas: "head head head" "list recipe shopping"; */
+}
+
+header {
+  max-width: 120rem;
+  margin: 4vw auto;
+  grid-area: head;
+  display: flex;
+  /* border: 1px solid blue; */
+  justify-content: space-around;
+  align-items: center;
+}
+.logo__wrapper {
+  display: flex;
+  align-items: baseline;
+}
+h1 {
+  color: #faed26;
+}
+.tvmazes__img {
+  width: 50px;
+  border-radius: 5px;
+}
+.search__input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 3px solid #faed26;
+  outline: none;
+}
+.search__btn {
+  background-color: #faed26;
+  border: none;
+  outline: none;
+  padding: 13px;
+  border-radius: 5px;
+}
+
+.movie__wrapper {
+  color: white;
+  border: 1px solid green;
+}
