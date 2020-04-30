@@ -14,20 +14,28 @@ body {
 
 html {
   box-sizing: border-box;
-  font-size: 62.5%;
+  /* font-size: 62.5%; */
 }
 
 .container {
-  max-width: 120rem;
+  max-width: 1200px;
   margin: 4vw auto;
   display: grid;
   border: 1px solid red;
-  /* grid-template-rows: 10rem minmax(100rem, auto); */
-  grid-template-columns: 1.1fr 2fr 1.1fr;
-  /* grid-template-areas: "head head head" "list recipe shopping"; */
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  grid-gap: 30px;
+}
+.container > div {
+  background-color: #eee;
+  word-wrap: break-word;
+}
+
+.container > div:nth-child(odd) {
+  background-color: yellow;
 }
 
 header {
+  /* background-color: #46344e; */
   max-width: 120rem;
   margin: 4vw auto;
   grid-area: head;
@@ -63,5 +71,5 @@ h1 {
 
 .movie__wrapper {
   color: white;
-  border: 1px solid green;
+  background-color: green;
 }
