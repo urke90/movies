@@ -17,22 +17,7 @@ html {
   /* font-size: 62.5%; */
 }
 
-.container {
-  max-width: 1200px;
-  margin: 4vw auto;
-  display: grid;
-  border: 1px solid red;
-  grid-template-columns: repeat(4, minmax(200px, 1fr));
-  grid-gap: 30px;
-}
-.container > div {
-  background-color: #eee;
-  word-wrap: break-word;
-}
-
-.container > div:nth-child(odd) {
-  background-color: yellow;
-}
+/* header */
 
 header {
   /* background-color: #46344e; */
@@ -68,8 +53,42 @@ h1 {
   padding: 13px;
   border-radius: 5px;
 }
+/* header */
+
+/* main part */
+.container {
+  max-width: 1200px;
+  margin: 4vw auto;
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 30px; */
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  flex: 1;
+}
 
 .movie__wrapper {
-  color: white;
-  background-color: green;
+  flex-basis: 201px;
+  margin-bottom: 40px;
 }
+.movie__picture {
+  width: 100%;
+  height: 250px;
+  /* videti kako za slike */
+}
+
+.movie__heading {
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.movie__title {
+  text-align: center;
+  padding: 10px;
+  color: #faed26;
+}
+.movie__genres {
+  color: #faed26;
+}
+/* main part */
