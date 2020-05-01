@@ -1,4 +1,12 @@
-// create HTML markup for rendering the movies
+// Remove searched movies from the UI
+export const removeMoviesHandler = () =>
+  (document.querySelector(".movies__container").innerHTML = "");
+
+// Clear search input value after fetching movies
+export const clearInputValueHandler = () =>
+  (document.querySelector(".search__input").value = "");
+
+// Create HTML markup for rendering the movies
 const movieMarkup = (movie) => {
   console.log("movie", movie);
 
