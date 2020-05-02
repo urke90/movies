@@ -1,6 +1,7 @@
 // Global App controller
 import "../css/style.css";
 import SeachMovies from "./models/Search";
+import ShowSearch from "./models/ShowSearch";
 import * as searchView from "./views/searchView";
 import * as base from "./views/base";
 
@@ -36,3 +37,6 @@ const searchController = async (e) => {
 document.querySelector(".search").addEventListener("submit", searchController);
 
 window.state = state;
+
+const m = new ShowSearch(42911);
+m.getSearchedMovie();

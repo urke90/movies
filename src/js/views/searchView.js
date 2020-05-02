@@ -8,8 +8,6 @@ export const clearInputValueHandler = () =>
 
 // Create HTML markup for rendering the movies
 const movieMarkup = (movie) => {
-  console.log("movie", movie);
-
   const { id, name, image } = movie.show;
   const htmlMarkup = `
         <div class="movie__wrapper">
@@ -35,6 +33,6 @@ const movieMarkup = (movie) => {
 
 // render movies to the UI
 export const renderMoviesHandler = (movies) => {
-  //console.log("movies", movies);
+  console.log("movies", movies);
   movies.map(movieMarkup);
 };
