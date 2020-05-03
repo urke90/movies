@@ -14,8 +14,10 @@ export const renderLoaderHandler = (parentEl) => {
 `;
   parentEl.insertAdjacentHTML("afterbegin", loaderSpinner);
 };
-
+// Removes loader from UI after fetching the data
 export const removeLoaderHandler = () => {
   const loader = document.querySelector(".lds-roller");
-  loader.parentElement.removeChild(loader);
+  if (loader) {
+    loader.parentElement.removeChild(loader);
+  }
 };

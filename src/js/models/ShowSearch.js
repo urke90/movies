@@ -5,12 +5,13 @@ export default class ShowSearch {
     this.tvId = tvId;
   }
 
-  async getSearchedMovie() {
+  async getSearchedShow() {
     try {
       const res = await axios(
         `https://cors-anywhere.herokuapp.com/http://api.tvmaze.com/shows/${this.tvId}`
       );
-      console.log("res SINGLE movie", res);
+
+      this.show = res.data;
     } catch (error) {
       console.log("error fetching SINGLE movie", error);
     }

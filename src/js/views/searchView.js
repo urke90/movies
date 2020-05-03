@@ -1,6 +1,9 @@
 // Remove searched movies from the UI
-export const removeMoviesHandler = () =>
-  (document.querySelector(".movies__container").innerHTML = "");
+
+// Multiple used querySelcector
+const moviesContainer = document.querySelector(".movies__container");
+
+export const removeMoviesHandler = () => (moviesContainer.innerHTML = "");
 
 // Clear search input value after fetching movies
 export const clearInputValueHandler = () =>
@@ -28,11 +31,10 @@ const movieMarkup = (movie) => {
           </p>
         </div>
     `;
-  document.querySelector(".movies__container").innerHTML += htmlMarkup;
+  moviesContainer.innerHTML += htmlMarkup;
 };
 
 // render movies to the UI
 export const renderMoviesHandler = (movies) => {
-  console.log("movies", movies);
   movies.map(movieMarkup);
 };
