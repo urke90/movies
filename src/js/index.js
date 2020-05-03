@@ -2,8 +2,10 @@
 import "../css/style.css";
 import SeachMovies from "./models/Search";
 import ShowSearch from "./models/ShowSearch";
+import Likes from "./models/Likes";
 import * as searchView from "./views/searchView";
 import * as showView from "./views/showView";
+import * as likesView from "./views/likesView";
 import * as base from "./views/base";
 
 // Global state of the app
@@ -70,3 +72,23 @@ const showSearchController = async () => {
 };
 
 window.addEventListener("hashchange", showSearchController);
+
+// Likes controller
+const likesContorller = () => {
+  // console.log("event.target", e.target);
+  if (!state.likedShow) state.likedShow = new Likes();
+
+  console.log("state.signleSearch", state.singleSearch);
+
+  const { id, image, name } = state.singleSearch.show;
+  const likedShow = state.likedShow.addLike(id, image, name);
+  console.log("state.likedShow", state.likedShow);
+  likesView.renderLikedShow(likedShow);
+};
+
+// add click event on signle show/movie container
+showContainer.addEventListener("click", (event) => {
+  if (event.target.matches(".likes__icon, .likes__icon *")) {
+    likesContorller();
+  }
+});

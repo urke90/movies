@@ -2,8 +2,6 @@
 const showContainer = document.querySelector(".show__container");
 
 const genresHtml = (genre) => {
-  console.log("genres", genre);
-
   return `
     <li>${genre}</li>
   `;
@@ -11,7 +9,7 @@ const genresHtml = (genre) => {
 
 // Create html markup for individual show
 const showHtml = (show) => {
-  console.log("show", show);
+  // console.log("show", show);
 
   const { image, name, summary, genres, type, premiered } = show;
 
@@ -39,6 +37,9 @@ const showHtml = (show) => {
             <p><b>${type}</b></p>
             <h3 class="show-description__heading">Premiered:</h3>
             <p><b>${premiered}</b></p>
+            <svg class="likes__icon">
+               <use href="assets/icons.svg#icon-heart-outlined"></use>
+            </svg>
         </div>
     `;
   showContainer.innerHTML = html;

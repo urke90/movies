@@ -62,9 +62,10 @@ h1 {
   padding: 13px;
   border-radius: 5px;
 }
-
+/* likes style */
 .likes__panel {
   display: flex;
+  position: relative;
 }
 
 .likes__icon {
@@ -73,6 +74,55 @@ h1 {
   width: 3rem;
   align-self: center;
 }
+
+.likes__list {
+  list-style-type: none;
+  top: 50px;
+  right: 0;
+  position: absolute;
+  min-width: 250px;
+  background-color: white;
+}
+
+.likes__list li {
+  padding: 3px 0;
+}
+
+.likes__list li > div {
+  max-width: 76px;
+}
+
+.likes__list {
+  padding: 5px 0;
+}
+
+.likes__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-decoration: none;
+}
+
+.likes__link > div {
+  flex-basis: 50%;
+}
+
+.likes-img__wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.likes__link img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.likes__link h3 {
+  color: #faed26;
+}
+/* likes style */
+
 /* header */
 
 /* main part */
