@@ -78,12 +78,23 @@ const likesContorller = () => {
   // console.log("event.target", e.target);
   if (!state.likedShow) state.likedShow = new Likes();
 
-  console.log("state.signleSearch", state.singleSearch);
-
   const { id, image, name } = state.singleSearch.show;
-  const likedShow = state.likedShow.addLike(id, image, name);
+
+  // get the id of the searched show/movie
+  const currentShowId = state.singleSearch.show.id;
+
+  // check if the show/movie is already liked
+  if (!state.likedShow.isLiked(currentShowId)) {
+    // show is not liked
+    const likedShow = state.likedShow.addLike(id, image, name);
+    likesView.renderLikedShowHandler(likedShow);
+  } else {
+    // show is liked
+    // console.log("nece da moze");
+    state.likedShow.removeLike(currentShowId);
+    likesView.removeLikedShowHandler(currentShowId);
+  }
   console.log("state.likedShow", state.likedShow);
-  likesView.renderLikedShow(likedShow);
 };
 
 // add click event on signle show/movie container
