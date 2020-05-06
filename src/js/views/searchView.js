@@ -1,8 +1,7 @@
-// Remove searched movies from the UI
-
 // Multiple used querySelcector
 const moviesContainer = document.querySelector(".movies__container");
 
+// Removes searched movies from UI
 export const removeMoviesHandler = () => (moviesContainer.innerHTML = "");
 
 // Clear search input value after fetching movies

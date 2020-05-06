@@ -1,6 +1,5 @@
 // render liked show to the UI
 export const renderLikedShowHandler = (likedShow) => {
-  console.log("liked show likesView", likedShow);
   const { id, img, name } = likedShow;
   const html = `
         <li>

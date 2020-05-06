@@ -1,4 +1,4 @@
-// querySelecotrs
+// querySelectors
 const showContainer = document.querySelector(".show__container");
 
 // toggles the like btn (full heart if liked, empty if not)
@@ -11,10 +11,11 @@ export const toggleLikeBtnHandler = (isLiked) => {
   console.log("heart", heart);
 };
 
-// Create html markup for individual show
-const showHtml = (show) => {
-  // console.log("show", show);
+// Remove show from the UI
+export const removeShowHandler = () => (showContainer.innerHTML = "");
 
+// render searched show on UI
+export const renderShowHandler = (show) => {
   const { image, name, summary, genres, type } = show;
 
   const genre = genres.map((genre) => `<li>${genre}</li>`);
@@ -53,12 +54,4 @@ const showHtml = (show) => {
         </div>
     `;
   showContainer.innerHTML = html;
-};
-
-// Remove show from the UI
-export const removeShowHandler = () => (showContainer.innerHTML = "");
-
-// render searched show on UI
-export const renderShowHandler = (show) => {
-  showHtml(show);
 };

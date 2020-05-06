@@ -67,7 +67,7 @@ h1 {
   display: flex;
   position: relative;
   /* transition: all 0.3s ease-in; */
-  /* visibility: hidden; */
+  visibility: hidden;
 }
 .likes__list__wrapper {
   display: none;
