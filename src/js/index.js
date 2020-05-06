@@ -14,6 +14,9 @@ const state = {};
 // Multiple used querySelectors
 const showContainer = document.querySelector(".show__container");
 
+// Hide likes manu when we first load the page
+// document.querySelector(".likes__panel").style.visibility = "hidden";
+
 // Controller for searching movies
 const searchController = async (e) => {
   e.preventDefault();
@@ -64,6 +67,7 @@ const showSearchController = async () => {
       await state.singleSearch.getSearchedShow();
 
       showView.renderShowHandler(state.singleSearch.show);
+      console.log("state.singleSearch.show", state.singleSearch.show);
       base.removeLoaderHandler();
     } catch (error) {
       console.log("error fetching show", error);
@@ -87,14 +91,17 @@ const likesContorller = () => {
   if (!state.likedShow.isLiked(currentShowId)) {
     // show is not liked
     const likedShow = state.likedShow.addLike(id, image, name);
+    showView.toggleLikeBtnHandler(true);
     likesView.renderLikedShowHandler(likedShow);
   } else {
     // show is liked
     // console.log("nece da moze");
     state.likedShow.removeLike(currentShowId);
+    showView.toggleLikeBtnHandler(false);
     likesView.removeLikedShowHandler(currentShowId);
   }
   console.log("state.likedShow", state.likedShow);
+  likesView.toggleLikesManu(state.likedShow.getNumLikes());
 };
 
 // add click event on signle show/movie container
@@ -103,3 +110,11 @@ showContainer.addEventListener("click", (event) => {
     likesContorller();
   }
 });
+
+const init = () => {
+  // likesView.toggleLikesManu(state.likedShow.getNumLikes());
+};
+
+window.addEventListener("load", init);
+
+window.state = state;

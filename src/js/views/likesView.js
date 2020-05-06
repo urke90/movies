@@ -26,13 +26,14 @@ export const renderLikedShowHandler = (likedShow) => {
 export const removeLikedShowHandler = (id) => {
   const elToRemove = document.querySelector(`.likes__link[href*="#${id}"]`)
     .parentElement;
-  console.log("elToRemove", elToRemove);
-  console.log("elToRemove.parentElement", elToRemove.parentNode);
-  console.log(
-    "elToRemove.parentElement.parentElement",
-    elToRemove.parentNode.parentNode
-  );
+
   if (elToRemove) {
     elToRemove.parentElement.removeChild(elToRemove);
   }
+};
+
+// toggles likes menu if there is(not) already liked movies
+export const toggleLikesManu = (numOfLikes) => {
+  const likesMenu = document.querySelector(".likes__panel");
+  likesMenu.style.visibility = numOfLikes > 0 ? "visible" : "hidden";
 };

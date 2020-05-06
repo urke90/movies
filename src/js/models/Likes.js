@@ -24,6 +24,11 @@ export default class Likes {
     // else return FALSE
     return this.likes.findIndex((el) => el.id === id) !== -1;
   }
+
+  getNumLikes() {
+    return this.likes.length;
+  }
+
   // saves likes to the local storage
   saveData() {}
   // loads the likes array from the local storage

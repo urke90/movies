@@ -1,17 +1,27 @@
 // querySelecotrs
 const showContainer = document.querySelector(".show__container");
 
-const genresHtml = (genre) => {
-  return `
-    <li>${genre}</li>
-  `;
+// toggles the like btn (full heart if liked, empty if not)
+export const toggleLikeBtnHandler = (isLiked) => {
+  const heart = isLiked ? "icon-heart" : "icon-heart-outlined";
+
+  document
+    .querySelector(".likes__icon--show use")
+    .setAttribute("href", `assets/icons.svg#${heart}`);
+  console.log("heart", heart);
 };
 
 // Create html markup for individual show
 const showHtml = (show) => {
   // console.log("show", show);
 
-  const { image, name, summary, genres, type, premiered } = show;
+  const { image, name, summary, genres, type } = show;
+
+  const genre = genres.map((genre) => `<li>${genre}</li>`);
+
+  let { premiered } = show;
+
+  premiered = premiered ? premiered : "No info for this show!";
 
   const html = `
         <div class="show-img__wrapper">
@@ -31,13 +41,13 @@ const showHtml = (show) => {
                 ${summary}            
             <h3 class="show-description__heading">Genres:</h3>
             <ul>
-                ${genres.map((genre) => genresHtml(genre))}
+                ${genre}
             </ul>
             <h3 class="show-description__heading">Type:</h3>
             <p><b>${type}</b></p>
             <h3 class="show-description__heading">Premiered:</h3>
             <p><b>${premiered}</b></p>
-            <svg class="likes__icon">
+            <svg class="likes__icon  likes__icon--show">
                <use href="assets/icons.svg#icon-heart-outlined"></use>
             </svg>
         </div>

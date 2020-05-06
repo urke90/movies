@@ -66,6 +66,24 @@ h1 {
 .likes__panel {
   display: flex;
   position: relative;
+  /* transition: all 0.3s ease-in; */
+  /* visibility: hidden; */
+}
+.likes__list__wrapper {
+  display: none;
+}
+
+.likes__panel:hover .likes__list,
+.likes__list__wrapper {
+  display: block;
+  opacity: 1;
+  padding: 5px 0px;
+  visibility: visible;
+}
+
+.likes__list li {
+  /* visibility: hidden; */
+  padding: 3px 0;
 }
 
 .likes__icon {
@@ -76,24 +94,26 @@ h1 {
 }
 
 .likes__list {
+  /* display: none; */
+  visibility: hidden;
+  opacity: 0;
   list-style-type: none;
   top: 50px;
   right: 0;
   position: absolute;
   min-width: 250px;
   background-color: white;
+  transition: all 0.3s ease;
 }
 
-.likes__list li {
+.likes__list li:hover {
   padding: 3px 0;
+  transform: translateY(-5px);
+  transition: all 0.3s;
 }
 
 .likes__list li > div {
   max-width: 76px;
-}
-
-.likes__list {
-  padding: 5px 0;
 }
 
 .likes__link {
