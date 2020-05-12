@@ -17,7 +17,7 @@
   box-sizing: inherit;
 }
 body {
-  background: #5a5560;
+  background: #9d8d8f;
 }
 
 html {
@@ -28,13 +28,10 @@ html {
 /* header */
 
 header {
-  /* background-color: #46344e; */
   max-width: 120rem;
   padding: 0px 15px;
   margin: 4vw auto;
-  grid-area: head;
   display: flex;
-  /* border: 1px solid blue; */
   justify-content: space-around;
   align-items: center;
 }
@@ -187,6 +184,45 @@ h1 {
 .movie__genres {
   color: #faed26;
 }
+
+.pagination__container {
+  /* border: 1px solid red; */
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.pagination__container button {
+  background-color: #faed26;
+  border: none;
+  outline: none;
+  padding: 0 5px;
+  border-radius: 4px;
+  margin: 0 5px;
+}
+
+.pagi-btn-next-prev {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border: none;
+  outline: none;
+  width: 50px;
+  padding: 0 5px;
+}
+.pagi-btn-next-prev span {
+  font-size: 14px;
+}
+
+.btn-next {
+  flex-direction: row-reverse;
+}
+
+.pagi-btn-next-prev svg {
+  width: 20px;
+  height: 22px;
+}
+
 /* main part */
 
 /* single movie */

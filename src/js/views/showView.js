@@ -1,16 +1,6 @@
 // querySelectors
 const showContainer = document.querySelector(".show__container");
 
-// toggles the like btn (full heart if liked, empty if not)
-export const toggleLikeBtnHandler = (isLiked) => {
-  const heart = isLiked ? "icon-heart" : "icon-heart-outlined";
-
-  document
-    .querySelector(".likes__icon--show use")
-    .setAttribute("href", `assets/icons.svg#${heart}`);
-  console.log("heart", heart);
-};
-
 // Remove show from the UI
 export const removeShowHandler = () => (showContainer.innerHTML = "");
 
@@ -18,7 +8,7 @@ export const removeShowHandler = () => (showContainer.innerHTML = "");
 export const renderShowHandler = (show) => {
   const { image, name, summary, genres, type } = show;
 
-  const genre = genres.map((genre) => `<li>${genre}</li>`);
+  const genre = genres.map((genre) => `<li>${genre}</li>`).join("");
 
   let { premiered } = show;
 
@@ -54,4 +44,15 @@ export const renderShowHandler = (show) => {
         </div>
     `;
   showContainer.innerHTML = html;
+};
+
+// toggles the like btn (full heart if liked, empty if not)
+export const toggleLikeBtnHandler = (isLiked) => {
+  const heart = isLiked ? "icon-heart" : "icon-heart-outlined";
+
+  document
+    .querySelector(".likes__icon--show use")
+    .setAttribute("href", `assets/icons.svg#${heart}`);
+
+  console.log("blababababa", document.querySelector(".likes__icon--show use"));
 };

@@ -56,6 +56,9 @@ const showSearchController = async () => {
   const hash = window.location.hash;
   const showId = hash.replace("#", "");
 
+  //remove pagination from UI
+  searchView.removePaginationHandler();
+
   // Removes previous search results before rendering new ones
   searchView.removeMoviesHandler();
   showContainer.style.display = "flex";
@@ -73,6 +76,7 @@ const showSearchController = async () => {
       await state.singleSearch.getSearchedShow();
 
       // render searched single show/movie on UI
+      console.log(state.singleSearch.show);
       showView.renderShowHandler(state.singleSearch.show);
 
       // remove spinner(loader) on UI after rendering single show/movie
@@ -129,7 +133,6 @@ showContainer.addEventListener("click", (event) => {
 
 // function called on page load
 const init = () => {
-  // likesView.toggleLikesManu(state.likedShow.getNumLikes());
   // create new likes array when page loads
   state.likedShow = new Likes();
   // load liked shows from local storage
@@ -140,7 +143,38 @@ const init = () => {
   state.likedShow.likes.map(likesView.renderLikedShowHandler);
 };
 
+const paginationClickHandler = (e) => {
+  e.preventDefault();
+
+  console.log("e.target", e.target);
+
+  // use to get number of page we want to go to, or prev/next
+  let goToPage;
+
+  if (e.target.matches(".pagi__btn-num, .pagi__btn-num *")) {
+    // clicked on page number btn
+    goToPage = parseInt(event.target.getAttribute("data-gotopage"));
+
+    // remove previous searched results
+    searchView.removeMoviesHandler();
+    // render new movies on UI
+    searchView.renderMoviesHandler(state.movies.results, goToPage);
+  } else if (e.target.matches(".pagi-btn-next-prev, .pagi-btn-next-prev *")) {
+    // click on prev/next pagi btn
+    goToPage = parseInt(
+      event.target.closest(".pagi-btn-next-prev").getAttribute("data-gotopage")
+    );
+
+    // remove prvious searched movies from UI
+    searchView.removeMoviesHandler();
+    // render new movies on UI
+    searchView.renderMoviesHandler(state.movies.results, goToPage);
+  }
+};
+
+document
+  .querySelector(".pagination__container")
+  .addEventListener("click", paginationClickHandler);
+
 // call the function when page loads
 window.addEventListener("load", init);
-
-window.state = state;
