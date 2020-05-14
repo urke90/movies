@@ -28,37 +28,65 @@ html {
 /* header */
 
 header {
+  display: flex;
+  justify-content: space-around;
   max-width: 120rem;
   padding: 0px 15px;
   margin: 4vw auto;
-  display: flex;
-  justify-content: space-around;
   align-items: center;
 }
 .logo__wrapper {
   display: flex;
   align-items: baseline;
 }
+
 h1 {
   color: #faed26;
 }
+
 .tvmazes__img {
   width: 50px;
   border-radius: 5px;
 }
-.search__input {
+
+.search > input {
   padding: 10px;
   border-radius: 5px;
   border: 3px solid #faed26;
   outline: none;
 }
-.search__btn {
+
+.search > input::placeholder {
+  color: black;
+}
+
+.search-people > button {
+  background-color: #78244c;
+  border: none;
+  outline: none;
+  padding: 13px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.search-people > input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 3px solid #78244c;
+  outline: none;
+}
+.search-people > input::placeholder {
+  color: black;
+}
+
+.search > button {
   background-color: #faed26;
   border: none;
   outline: none;
   padding: 13px;
   border-radius: 5px;
 }
+
 /* likes style */
 .likes__panel {
   display: flex;
