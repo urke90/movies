@@ -6,9 +6,15 @@ export default class ActorSearch {
   }
 
   async getActors() {
-    const res = await axios(`http://api.tvmaze.com/search/people?q=${query}`);
-    const bla = res.data;
-    console.log("bla", bla);
+    try {
+      const res = await axios(
+        `http://api.tvmaze.com/search/people?q=${this.query}`
+      );
+      //   this.bla = res.data;
+      console.log("res", res);
+    } catch (error) {
+      console.log("error fetching actor", error);
+    }
   }
 }
 

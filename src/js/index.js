@@ -3,6 +3,7 @@ import "../css/style.css";
 import SeachMovies from "./models/Search";
 import ShowSearch from "./models/ShowSearch";
 import Likes from "./models/Likes";
+import ActorSearch from "./models/ActorSearch";
 import * as searchView from "./views/searchView";
 import * as showView from "./views/showView";
 import * as likesView from "./views/likesView";
@@ -131,19 +132,8 @@ showContainer.addEventListener("click", (event) => {
   }
 });
 
-// function called on page load
-const init = () => {
-  // create new likes array when page loads
-  state.likedShow = new Likes();
-  // load liked shows from local storage
-  state.likedShow.loadData();
-  // if there are liked shows display likes menu(panel)
-  likesView.toggleLikesManu(state.likedShow.getNumLikes());
-  // render liked shows in likes menu
-  state.likedShow.likes.map(likesView.renderLikedShowHandler);
-};
-
-const paginationClickHandler = (e) => {
+// Pagination contorller
+const paginationController = (e) => {
   e.preventDefault();
 
   console.log("e.target", e.target);
@@ -172,9 +162,48 @@ const paginationClickHandler = (e) => {
   }
 };
 
+// evt listener for pagination
 document
   .querySelector(".pagination__container")
-  .addEventListener("click", paginationClickHandler);
+  .addEventListener("click", paginationController);
 
+// actor search controller
+const actorSearchController = async (e) => {
+  e.preventDefault();
+  // get value from actor search input
+  const actorsModal = document.querySelector("#actors-modal");
+  const query = document.querySelector(".search-people__input").value;
+
+  if (query) {
+    state.actors = new ActorSearch(query);
+
+    actorsModal.classList.add("visible");
+    base.renderLoaderHandler(actorsModal);
+
+    try {
+      await state.actors.getActors();
+      console.log("state", state);
+    } catch (error) {
+      console.log("error fetching actor actor ctrl", error);
+    }
+  }
+};
+
+// add evt listener for actor search form
+document
+  .querySelector(".search-people")
+  .addEventListener("submit", actorSearchController);
+
+// function called on page load
+const init = () => {
+  // create new likes array when page loads
+  state.likedShow = new Likes();
+  // load liked shows from local storage
+  state.likedShow.loadData();
+  // if there are liked shows display likes menu(panel)
+  likesView.toggleLikesManu(state.likedShow.getNumLikes());
+  // render liked shows in likes menu
+  state.likedShow.likes.map(likesView.renderLikedShowHandler);
+};
 // call the function when page loads
 window.addEventListener("load", init);
