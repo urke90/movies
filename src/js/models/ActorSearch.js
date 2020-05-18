@@ -10,10 +10,28 @@ export default class ActorSearch {
       const res = await axios(
         `http://api.tvmaze.com/search/people?q=${this.query}`
       );
-      //   this.bla = res.data;
-      console.log("res", res);
+
+      const data = res.data[0].person;
+
+      // const {
+      //   name,
+      //   country: { name: country },
+      //   birthday,
+      //   gender,
+      //   image: { original: imgOriginal },
+      // } = data;
+
+      this.name = data.name;
+      this.country =
+        data.country && data.country.name ? data.country.name : "No Info!";
+      this.birthday = data.birthday ? data.birthday : "No info!";
+      this.gender = data.gender ? data.gender : "No Info!";
+      this.img =
+        data.image && data.image.original
+          ? data.image.original
+          : "./assets/no-image.png";
     } catch (error) {
-      console.log("error fetching actor", error);
+      console.log("error fetching actor model", error);
     }
   }
 }

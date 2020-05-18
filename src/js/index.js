@@ -7,6 +7,7 @@ import ActorSearch from "./models/ActorSearch";
 import * as searchView from "./views/searchView";
 import * as showView from "./views/showView";
 import * as likesView from "./views/likesView";
+import * as actorsView from "./views/actorSearchView";
 import * as base from "./views/base";
 
 // Global state of the app
@@ -175,14 +176,20 @@ const actorSearchController = async (e) => {
   const query = document.querySelector(".search-people__input").value;
 
   if (query) {
+    // removes prev actor search results
+    actorsView.removeActorHandler();
+
     state.actors = new ActorSearch(query);
 
     actorsModal.classList.add("visible");
+    document.querySelector("#modal-backdrop").style.display = "block";
     base.renderLoaderHandler(actorsModal);
 
     try {
       await state.actors.getActors();
-      console.log("state", state);
+
+      actorsView.renderActorHandler(state.actors);
+      base.removeLoaderHandler();
     } catch (error) {
       console.log("error fetching actor actor ctrl", error);
     }
@@ -207,3 +214,5 @@ const init = () => {
 };
 // call the function when page loads
 window.addEventListener("load", init);
+
+console.log(document.querySelector(".modal-wrapper"));
